@@ -1,2 +1,4 @@
-package com.JinAlYang.region.service;public interface RegionService {
+package com.JinAlYang.region.service;
+
+public interface RegionService {
 }

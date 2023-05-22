@@ -1,2 +1,4 @@
-package com.JinAlYang.wishList.service;public class WishListServiceImpl {
+package com.JinAlYang.wishList.service;
+
+public class WishListServiceImpl implements WishListService{
 }

@@ -1,2 +1,4 @@
-package com.JinAlYang.realEstate.service;public class RealEstateService {
+package com.JinAlYang.realEstate.service;
+
+public interface RealEstateService {
 }

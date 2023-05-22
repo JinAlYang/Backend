@@ -1,2 +1,4 @@
-package com.JinAlYang.region.service;public class RegionServiceImpl {
+package com.JinAlYang.region.service;
+
+public class RegionServiceImpl implements RegionService{
 }

@@ -1,2 +1,4 @@
-package com.JinAlYang.region.web.controller;public class RegionController {
+package com.JinAlYang.region.web.controller;
+
+public class RegionController {
 }

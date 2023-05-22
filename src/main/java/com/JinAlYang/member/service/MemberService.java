@@ -1,2 +1,4 @@
-package com.JinAlYang.member.service;public interface MemberService {
+package com.JinAlYang.member.service;
+
+public interface MemberService {
 }

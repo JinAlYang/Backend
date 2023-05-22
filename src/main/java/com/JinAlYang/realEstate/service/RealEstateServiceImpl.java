@@ -1,4 +1,4 @@
 package com.JinAlYang.realEstate.service;
 
-public class RealEstateImpl implements RealEstateService{
+public class RealEstateServiceImpl implements RealEstateService{
 }

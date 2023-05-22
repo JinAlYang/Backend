@@ -1,2 +1,4 @@
-package com.JinAlYang.realEstate.web.controller;public class RealEstateController {
+package com.JinAlYang.realEstate.web.controller;
+
+public class RealEstateController {
 }
