@@ -1,18 +1,17 @@
-package com.JinAlYang.wishList.domain;
+package com.JinAlYang.memberRegion;
 
 import com.JinAlYang.member.domain.Member;
-import com.JinAlYang.realEstate.domain.RealEstate;
 import com.JinAlYang.region.domain.Region;
 import jakarta.persistence.*;
 import lombok.NoArgsConstructor;
 
 @Entity
-@Table(name = "wishList")
+@Table(name = "member_region")
 @NoArgsConstructor
-public class WishList {
+public class MemberRegion {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "wishList_id")
+    @Column(name = "member_region_id")
     private Long id;
 
     @ManyToOne
@@ -20,11 +19,6 @@ public class WishList {
     private Member member;
 
     @ManyToOne
-    @JoinColumn(name = "realEstate_id")
-    private RealEstate realEstate;
-
-    private boolean recentHome_status;
-
-    private boolean realEstateAgency_status;
-
+    @JoinColumn(name = "region_id")
+    private Region region;
 }
