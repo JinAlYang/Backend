@@ -12,49 +12,49 @@ import java.util.List;
 public class WishListController {
 
     @GetMapping("/recentHome/{memberId}")
-    public List<RealEstateResponseDto> getRecentHomeWishList(@PathVariable("memberId") String memberId) {
+    public List<RealEstateResponseDto> getRecentHomeWishList(@PathVariable("memberId") Long memberId) {
 
         return null;
     }
 
     @GetMapping("/zzimHome/{memberId}")
-    public String getZzimHomeWishList(@PathVariable("memberId") String memberId) {
+    public String getZzimHomeWishList(@PathVariable("memberId") Long memberId) {
 
         return null;
     }
 
     @PostMapping("/recentHome")
-    public String addToRecentHomeWishList(
+    public boolean addToRecentHomeWishList(
             @RequestParam("memberId") String memberId,
             @RequestParam("realEstateId") String realEstateId
     ) {
 
-        return null;
+        return true;
     }
 
     @PostMapping("/zzimHome")
-    public String addToZzimHomeWishList(
+    public boolean addToZzimHomeWishList(
             @RequestParam("memberId") String memberId,
             @RequestParam("realEstateId") String realEstateId
     ) {
 
-        return null;
+        return true;
     }
 
     @DeleteMapping("/recentHome")
-    public String removeFromRecentHomeWishList(
+    public boolean removeFromRecentHomeWishList(
             @RequestParam("memberId") String memberId,
             @RequestParam("realEstateId") String realEstateId
     ) {
-        return null;
+        return true;
     }
 
     @DeleteMapping("/zzimHome")
-    public String removeFromZzimHomeWishList(
+    public boolean removeFromZzimHomeWishList(
             @RequestParam("memberId") String memberId,
             @RequestParam("realEstateId") String realEstateId
     ) {
 
-        return null;
+        return true;
     }
 }

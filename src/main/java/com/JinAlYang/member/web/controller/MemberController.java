@@ -16,7 +16,7 @@ public class MemberController {
 
     @GetMapping("/{id}")
     public MemberResponseDto getMember(@PathVariable Long id) {
-        return null;
+        return memberService.findMemberById(id);
     }
 
     @PostMapping("")
