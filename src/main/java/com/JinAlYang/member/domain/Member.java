@@ -1,6 +1,7 @@
 package com.JinAlYang.member.domain;
 
 import com.JinAlYang.region.domain.Region;
+import com.JinAlYang.searchPreset.domain.SearchPreset;
 import com.JinAlYang.wishList.domain.WishList;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -42,4 +43,7 @@ public class Member {
 
     @OneToMany(mappedBy = "member")
     private List<WishList> memberRealEstate;
+
+    @OneToMany(mappedBy = "member")
+    private List<SearchPreset> memberSearchPreset;
 }
