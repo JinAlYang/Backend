@@ -1,5 +1,6 @@
 package com.JinAlYang.member.domain;
 
+import com.JinAlYang.memberRegion.MemberRegion;
 import com.JinAlYang.region.domain.Region;
 import com.JinAlYang.searchPreset.domain.SearchPreset;
 import com.JinAlYang.wishList.domain.WishList;
@@ -39,11 +40,11 @@ public class Member {
     private int loanInterest;
 
     @OneToMany(mappedBy = "member")
-    private List<Region> InterestMemberRegion;
+    private List<MemberRegion> InterestMemberRegions;
 
     @OneToMany(mappedBy = "member")
     private List<WishList> memberRealEstate;
 
     @OneToMany(mappedBy = "member")
-    private List<SearchPreset> memberSearchPreset;
+    private List<SearchPreset> memberSearchPresets;
 }

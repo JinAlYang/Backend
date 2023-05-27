@@ -3,9 +3,11 @@ package com.JinAlYang.realEstate.domain;
 
 import com.JinAlYang.region.domain.Region;
 import jakarta.persistence.*;
+import lombok.Builder;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Entity
 @Table(name = "realEstate")
@@ -41,6 +43,25 @@ public class RealEstate {
     private LocalDateTime builtDate;
 
     @ManyToOne
-    @Column(name = "region_id")
+    @JoinColumn(name = "region_id")
     private Region region;
+
+    @OneToMany(mappedBy = "realEstate")
+    private List<RealEstateDetail> realEstateDetailList;
+
+    @Builder
+    public RealEstate(MonthlyRentType monthlyRentType, int deposit, int roomSize, SpaceType spaceType, int monthlyPayment, LocalDateTime occupancyPeriods, WindowDirection windowDirection, LocalDateTime builtDate) {
+        this.monthlyRentType = monthlyRentType;
+        this.deposit = deposit;
+        this.roomSize = roomSize;
+        this.spaceType = spaceType;
+        this.monthlyPayment = monthlyPayment;
+        this.occupancyPeriods = occupancyPeriods;
+        this.windowDirection = windowDirection;
+        this.builtDate = builtDate;
+    }
+
+    public void setRealEstateDetailList(List<RealEstateDetail> realEstateDetailList) {
+        this.realEstateDetailList = realEstateDetailList;
+    }
 }

@@ -23,7 +23,6 @@ public class Region {
     @Column(name = "region_represent_address")
     private String represent_address;
 
-
-    @OneToMany(mappedBy = "realEstate")
+    @OneToMany(mappedBy = "region")
     private List<RealEstate> realEstateList;
 }
