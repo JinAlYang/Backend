@@ -4,6 +4,7 @@ import com.JinAlYang.searchPreset.service.SearchPresetService;
 import com.JinAlYang.searchPreset.web.dto.SearchPresetResponseDto;
 import com.JinAlYang.searchPreset.web.dto.SearchPresetSaveRequestDto;
 import lombok.RequiredArgsConstructor;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 @RequiredArgsConstructor
@@ -11,6 +12,12 @@ import org.springframework.web.bind.annotation.*;
 public class SearchPresetController {
 
     private final SearchPresetService searchPresetService;
+
+    @GetMapping("")
+    public String preset(Model model) {
+        model.addAttribute("searchPreset", searchPresetService.findAllSearchPreset());
+        return "preset";
+    }
 
     @PostMapping("")
     public Long addSearchPreset(@RequestBody SearchPresetSaveRequestDto requestDto) {

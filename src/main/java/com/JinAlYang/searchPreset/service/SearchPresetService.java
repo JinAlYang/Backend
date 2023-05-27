@@ -9,13 +9,13 @@ import java.util.List;
 public interface SearchPresetService {
 
     @Transactional
+    List<SearchPresetResponseDto> findAllSearchPreset();
+
+    @Transactional
     Long addSearchPreset(SearchPresetSaveRequestDto requestDto);
 
     @Transactional
     void removeSearchPreset(Long preset_id);
 
     public SearchPresetResponseDto findById(Long preset_id);
-
-    @Transactional
-    List<SearchPresetResponseDto> findAllSearchPreset(Long memberId);
 }
