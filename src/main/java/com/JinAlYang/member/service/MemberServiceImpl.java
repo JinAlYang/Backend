@@ -3,7 +3,9 @@ package com.JinAlYang.member.service;
 import com.JinAlYang.member.web.dto.MemberResponseDto;
 import com.JinAlYang.member.web.dto.MemberSignInDto;
 import com.JinAlYang.member.web.dto.MemberUpdateDto;
+import org.springframework.stereotype.Service;
 
+@Service
 public class MemberServiceImpl implements MemberService{
 
     @Override
