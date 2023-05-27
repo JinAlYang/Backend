@@ -1,8 +1,14 @@
 package com.JinAlYang.searchPreset.domain;
 
+import com.JinAlYang.member.domain.Member;
 import jakarta.persistence.*;
+import lombok.Builder;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
+@Getter
 @Entity
 @Table(name = "searchPreset")
 @NoArgsConstructor
@@ -21,4 +27,18 @@ public class SearchPreset {
 
     @Column(name = "searchPreset_info")
     private String preset_info;
+
+    @ManyToOne
+    @JoinColumn(name = "member_id")
+    @OnDelete(action = OnDeleteAction.CASCADE)
+    private Member member;
+
+    @Builder
+    public SearchPreset(String name, String url, String preset_info) {
+        this.name = name;
+        this.url = url;
+        this.preset_info = preset_info;
+    }
+
+
 }
