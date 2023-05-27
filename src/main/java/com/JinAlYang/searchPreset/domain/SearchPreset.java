@@ -39,6 +39,4 @@ public class SearchPreset {
         this.url = url;
         this.preset_info = preset_info;
     }
-
-
 }
