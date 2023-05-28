@@ -4,32 +4,32 @@ import com.JinAlYang.searchPreset.service.SearchPresetService;
 import com.JinAlYang.searchPreset.web.dto.SearchPresetResponseDto;
 import com.JinAlYang.searchPreset.web.dto.SearchPresetSaveRequestDto;
 import lombok.RequiredArgsConstructor;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RequiredArgsConstructor
 @RestController
+@RequestMapping("/preset")
 public class SearchPresetController {
-
     private final SearchPresetService searchPresetService;
 
-    @GetMapping("")
-    public String preset(Model model) {
-        model.addAttribute("searchPreset", searchPresetService.findAllSearchPreset());
-        return "preset";
+    @GetMapping("/get")
+    public List<SearchPresetResponseDto> getSearchPresetList() {
+        return null;
     }
 
-    @PostMapping("")
+    @PostMapping("/save")
     public Long addSearchPreset(@RequestBody SearchPresetSaveRequestDto requestDto) {
         return searchPresetService.addSearchPreset(requestDto);
     }
 
-    @GetMapping("")
-    public SearchPresetResponseDto findById(@PathVariable Long preset_id) {
-        return searchPresetService.findById(preset_id);
+    @GetMapping("/{preset_id}")
+    public SearchPresetResponseDto getSearchPresetById(@PathVariable Long preset_id) {
+        return searchPresetService.findSearchPresetById(preset_id);
     }
 
-    @DeleteMapping("")
+    @DeleteMapping("/delete/{preset_id}")
     public Long removeSearchPreset(@PathVariable Long preset_id) {
         searchPresetService.removeSearchPreset(preset_id);
         return preset_id;
