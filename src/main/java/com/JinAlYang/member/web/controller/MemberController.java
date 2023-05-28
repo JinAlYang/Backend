@@ -1,6 +1,7 @@
 package com.JinAlYang.member.web.controller;
 
 import com.JinAlYang.member.service.MemberService;
+import com.JinAlYang.member.web.dto.MemberCreateDto;
 import com.JinAlYang.member.web.dto.MemberResponseDto;
 import com.JinAlYang.member.web.dto.MemberSignInDto;
 import com.JinAlYang.member.web.dto.MemberUpdateDto;
@@ -13,6 +14,11 @@ import org.springframework.web.bind.annotation.*;
 public class MemberController {
 
     private final MemberService memberService;
+
+    @PostMapping("")
+    public boolean createMember(@RequestBody MemberCreateDto memberCreateDto) {
+        return memberService.createMember(memberCreateDto).isPresent();
+    }
 
     @GetMapping("/{id}")
     public MemberResponseDto getMember(@PathVariable Long id) {

@@ -47,4 +47,16 @@ public class Member {
 
     @OneToMany(mappedBy = "member")
     private List<SearchPreset> memberSearchPresets;
+
+    @Builder
+    public Member(String name, String email, String profileUrl, Gender gender, int age, int livingExpenses, int savingMoney, int loanInterest) {
+        this.name = name;
+        this.email = email;
+        this.profileUrl = profileUrl;
+        this.gender = gender;
+        this.age = age;
+        this.livingExpenses = livingExpenses;
+        this.savingMoney = savingMoney;
+        this.loanInterest = loanInterest;
+    }
 }
