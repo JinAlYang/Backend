@@ -37,8 +37,7 @@ public class RealEstateController {
             @RequestParam("filter") String filter,
             HttpServletResponse response
     ) {
-
-        return null;
+        return realEstateService.findAllRealEstateByFilter(location, filter);
     }
 
 }
