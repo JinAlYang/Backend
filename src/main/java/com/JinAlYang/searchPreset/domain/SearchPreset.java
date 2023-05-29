@@ -5,11 +5,9 @@ import jakarta.persistence.*;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
-import org.hibernate.annotations.OnDelete;
-import org.hibernate.annotations.OnDeleteAction;
+import java.lang.Long;
 
-@Setter
+
 @Getter
 @Entity
 @Table(name = "searchPreset")
@@ -21,6 +19,10 @@ public class SearchPreset {
     @Column(name = "searchPreset_id")
     private Long id;
 
+    @ManyToOne
+    @JoinColumn(name = "member_id")
+    private Member member;
+
     @Column(name = "searchPreset_name")
     private String name;
 
@@ -31,7 +33,8 @@ public class SearchPreset {
     private String preset_info;
 
     @Builder
-    public SearchPreset(String name, String url, String preset_info) {
+    public SearchPreset(Member member, String name, String url, String preset_info) {
+        this.member = member;
         this.name = name;
         this.url = url;
         this.preset_info = preset_info;

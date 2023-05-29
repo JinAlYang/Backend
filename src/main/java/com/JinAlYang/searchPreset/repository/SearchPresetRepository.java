@@ -9,5 +9,5 @@ import java.util.List;
 public interface SearchPresetRepository extends JpaRepository<SearchPreset, Long> {
 
     @Query("select sp from SearchPreset sp order by sp.id desc")
-    List<SearchPreset> findAllSearchPreset();
+    List<SearchPreset> findAllSearchPreset(Long member_id);
 }

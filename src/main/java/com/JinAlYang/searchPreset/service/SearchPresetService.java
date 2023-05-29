@@ -2,17 +2,18 @@ package com.JinAlYang.searchPreset.service;
 
 import com.JinAlYang.searchPreset.web.dto.SearchPresetResponseDto;
 import com.JinAlYang.searchPreset.web.dto.SearchPresetSaveRequestDto;
-import jakarta.transaction.Transactional;
 
 import java.util.List;
+import java.lang.Long;
 
 public interface SearchPresetService {
 
-    List<SearchPresetResponseDto> findAllSearchPreset();
+    public List<SearchPresetResponseDto> findAllSearchPreset(Long memberId);
 
-    Long addSearchPreset(SearchPresetSaveRequestDto requestDto);
+    public SearchPresetResponseDto findSearchPresetById(Long memberId, Long presetId);
 
-    void removeSearchPreset(Long preset_id);
+    public boolean addSearchPreset(Long memberId, SearchPresetSaveRequestDto requestDto);
 
-    SearchPresetResponseDto findSearchPresetById(Long preset_id);
+    public boolean removeSearchPreset(Long memberId, Long presetId);
+
 }

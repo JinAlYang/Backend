@@ -7,6 +7,8 @@ import com.JinAlYang.searchPreset.domain.SearchPreset;
 import com.JinAlYang.wishList.domain.WishList;
 import jakarta.persistence.*;
 import lombok.*;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -50,9 +52,8 @@ public class Member {
     private Map<Long, WishList> wishLists;
 
     @OneToMany(mappedBy = "member")
-    @JoinColumn(name = "searchPreset")
     @OnDelete(action = OnDeleteAction.CASCADE)
-    private List<SearchPreset> memberSearchPresets;
+    private List<SearchPreset> searchPresets;
 
     @Builder
     public Member(String name, String email, String profileUrl, Gender gender, int age, int livingExpenses, int savingMoney, int loanInterest) {
@@ -94,5 +95,13 @@ public class Member {
             System.out.println("해당 Member( "+this.getId()+" )의 wishList가 Null이었습니다.");
         }
         return this.wishLists;
+    }
+
+    public List<SearchPreset> initializeOrGetSearchPreset() {
+        if(this.searchPresets == null) {
+            this.searchPresets = new ArrayList<>();
+            System.out.println("해당 Member( "+this.getId()+" )의 searchPreset이 Null이었습니다.");
+        }
+        return this.searchPresets;
     }
 }

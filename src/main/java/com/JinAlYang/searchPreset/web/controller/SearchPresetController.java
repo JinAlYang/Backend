@@ -7,6 +7,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.lang.Long;
 
 @RequiredArgsConstructor
 @RestController
@@ -14,24 +15,30 @@ import java.util.List;
 public class SearchPresetController {
     private final SearchPresetService searchPresetService;
 
-    @GetMapping("/get")
-    public List<SearchPresetResponseDto> getSearchPresetList() {
-        return null;
+    @GetMapping("/find/{memberId}")
+    public List<SearchPresetResponseDto> getSearchPresetList(
+            @PathVariable("memberId") Long memberId) {
+        return searchPresetService.findAllSearchPreset(memberId);
     }
 
-    @PostMapping("/save")
-    public Long addSearchPreset(@RequestBody SearchPresetSaveRequestDto requestDto) {
-        return searchPresetService.addSearchPreset(requestDto);
+    @GetMapping("/find/{memberId}/{presetId}")
+    public SearchPresetResponseDto getSearchPresetById(
+            @PathVariable("memberId") Long memberId,
+            @PathVariable("presetId") Long presetId) {
+        return searchPresetService.findSearchPresetById(memberId, presetId);
     }
 
-    @GetMapping("/{preset_id}")
-    public SearchPresetResponseDto getSearchPresetById(@PathVariable Long preset_id) {
-        return searchPresetService.findSearchPresetById(preset_id);
+    @PostMapping("/alter/{memberId}")
+    public boolean addSearchPreset(
+            @PathVariable("memberId") Long memberId,
+            @RequestBody SearchPresetSaveRequestDto requestDto) {
+        return searchPresetService.addSearchPreset(memberId, requestDto);
     }
 
-    @DeleteMapping("/delete/{preset_id}")
-    public Long removeSearchPreset(@PathVariable Long preset_id) {
-        searchPresetService.removeSearchPreset(preset_id);
-        return preset_id;
+    @DeleteMapping("/alter/{memberId}/{presetId}")
+    public boolean removeSearchPreset(
+            @PathVariable("memberId") Long memberId,
+            @PathVariable("presetId") Long presetId) {
+        return searchPresetService.removeSearchPreset(memberId, presetId);
     }
 }
