@@ -1,6 +1,7 @@
 package com.JinAlYang.wishList.web.controller;
 
 import com.JinAlYang.realEstate.web.dto.RealEstateResponseDto;
+import com.JinAlYang.wishList.service.WishListService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
@@ -11,50 +12,50 @@ import java.util.List;
 @RequestMapping("/wishList")
 public class WishListController {
 
+    private final WishListService wishListService;
+
     @GetMapping("/recentHome/{memberId}")
     public List<RealEstateResponseDto> getRecentHomeWishList(@PathVariable("memberId") Long memberId) {
 
-        return null;
+        return wishListService.findAllRecentHome(memberId);
     }
 
     @GetMapping("/zzimHome/{memberId}")
-    public String getZzimHomeWishList(@PathVariable("memberId") Long memberId) {
+    public List<RealEstateResponseDto> getZzimHomeWishList(@PathVariable("memberId") Long memberId) {
 
-        return null;
+        return wishListService.findAllZzimHome(memberId);
     }
 
-    @PostMapping("/recentHome")
+    @PostMapping("/recentHome/{memberId}/{realEstateId}")
     public boolean addToRecentHomeWishList(
-            @RequestParam("memberId") String memberId,
-            @RequestParam("realEstateId") String realEstateId
+            @PathVariable("memberId") Long memberId,
+            @PathVariable("realEstateId") Long realEstateId
     ) {
-
-        return true;
+        return wishListService.addRecentHome(memberId, realEstateId);
     }
 
-    @PostMapping("/zzimHome")
+    @PostMapping("/zzimHome/{memberId}/{realEstateId}")
     public boolean addToZzimHomeWishList(
-            @RequestParam("memberId") String memberId,
-            @RequestParam("realEstateId") String realEstateId
+            @PathVariable("memberId") Long memberId,
+            @PathVariable("realEstateId") Long realEstateId
     ) {
-
-        return true;
+        return wishListService.addZzimHome(memberId, realEstateId);
     }
 
-    @DeleteMapping("/recentHome")
+    @DeleteMapping("/recentHome/{memberId}/{realEstateId}")
     public boolean removeFromRecentHomeWishList(
-            @RequestParam("memberId") String memberId,
-            @RequestParam("realEstateId") String realEstateId
+            @PathVariable("memberId") Long memberId,
+            @PathVariable("realEstateId") Long realEstateId
     ) {
-        return true;
+        return wishListService.removeRecentHome(memberId, realEstateId);
     }
 
-    @DeleteMapping("/zzimHome")
+    @DeleteMapping("/zzimHome/{memberId}/{realEstateId}")
     public boolean removeFromZzimHomeWishList(
-            @RequestParam("memberId") String memberId,
-            @RequestParam("realEstateId") String realEstateId
+            @PathVariable("memberId") Long memberId,
+            @PathVariable("realEstateId") Long realEstateId
     ) {
 
-        return true;
+        return wishListService.removeZzimHome(memberId, realEstateId);
     }
 }

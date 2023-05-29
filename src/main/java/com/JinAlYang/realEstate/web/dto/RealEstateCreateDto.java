@@ -14,6 +14,12 @@ import java.util.List;
 @Data
 public class RealEstateCreateDto {
 
+    private String address;
+
+    private String latitude;
+
+    private String longitude;
+
     private MonthlyRentType monthlyRentType;
 
     private int deposit;
@@ -33,7 +39,10 @@ public class RealEstateCreateDto {
     private RealEstateDetailCreateDto realEstateDetailCreateDto;
 
     @Builder
-    public RealEstateCreateDto(MonthlyRentType monthlyRentType, int deposit, int roomSize, SpaceType spaceType, int monthlyPayment, LocalDateTime occupancyPeriods, WindowDirection windowDirection, LocalDateTime builtDate, RealEstateDetailCreateDto realEstateDetailCreateDto) {
+    public RealEstateCreateDto(String address, String latitude, String longitude, MonthlyRentType monthlyRentType, int deposit, int roomSize, SpaceType spaceType, int monthlyPayment, LocalDateTime occupancyPeriods, WindowDirection windowDirection, LocalDateTime builtDate, RealEstateDetailCreateDto realEstateDetailCreateDto) {
+        this.address = address;
+        this.latitude = latitude;
+        this.longitude = longitude;
         this.monthlyRentType = monthlyRentType;
         this.deposit = deposit;
         this.roomSize = roomSize;
@@ -62,6 +71,9 @@ public class RealEstateCreateDto {
 
     public RealEstate toEntity(){
         return RealEstate.builder()
+                .address(address)
+                .latitude(latitude)
+                .longitude(longitude)
                 .monthlyRentType(monthlyRentType)
                 .deposit(deposit)
                 .roomSize(roomSize)

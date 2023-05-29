@@ -23,6 +23,15 @@ public class RealEstate {
     @Column(name = "realEstate_id")
     private Long id;
 
+    @Column(name = "realEstate_address", nullable = false)
+    private String address;
+
+    @Column(name = "realEstate_latitude", nullable = false)
+    private String latitude;
+
+    @Column(name = "realEstate_longitude", nullable = false)
+    private String longitude;
+
     @Column(name = "jeonse_monthlyRent_type",nullable = false)
     @Enumerated(value = EnumType.STRING)
     private MonthlyRentType monthlyRentType;
@@ -60,7 +69,10 @@ public class RealEstate {
     private RealEstateDetail realEstateDetail;
 
     @Builder
-    public RealEstate(MonthlyRentType monthlyRentType, int deposit, int roomSize, SpaceType spaceType, int monthlyPayment, LocalDateTime occupancyPeriods, WindowDirection windowDirection, LocalDateTime builtDate) {
+    public RealEstate(String address, String latitude, String longitude, MonthlyRentType monthlyRentType, int deposit, int roomSize, SpaceType spaceType, int monthlyPayment, LocalDateTime occupancyPeriods, WindowDirection windowDirection, LocalDateTime builtDate) {
+        this.address = address;
+        this.latitude = latitude;
+        this.longitude = longitude;
         this.monthlyRentType = monthlyRentType;
         this.deposit = deposit;
         this.roomSize = roomSize;
@@ -69,23 +81,6 @@ public class RealEstate {
         this.occupancyPeriods = occupancyPeriods;
         this.windowDirection = windowDirection;
         this.builtDate = builtDate;
-    }
-
-    @Override
-    public String toString() {
-        return "RealEstate{" +
-                "id=" + id +
-                ", monthlyRentType=" + monthlyRentType +
-                ", deposit=" + deposit +
-                ", roomSize=" + roomSize +
-                ", spaceType=" + spaceType +
-                ", monthlyPayment=" + monthlyPayment +
-                ", occupancyPeriods=" + occupancyPeriods +
-                ", windowDirection=" + windowDirection +
-                ", builtDate=" + builtDate +
-                ", region=" + region +
-                ", realEstateDetail=" + realEstateDetail +
-                '}';
     }
 
     public void setRealEstateDetail(RealEstateDetail realEstateDetail) {

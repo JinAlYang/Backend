@@ -8,14 +8,14 @@ public interface WishListService {
 
     public List<RealEstateResponseDto> findAllRecentHome(Long memberId);
 
-    public boolean addRecentHome(String memberId, String realEstateId);
+    public boolean addRecentHome(Long memberId, Long realEstateId);
 
-    public boolean removeRecentHome(String memberId, String realEstateId);
+    public boolean removeRecentHome(Long memberId, Long realEstateId);
 
     public List<RealEstateResponseDto> findAllZzimHome(Long member);
 
-    public boolean addZzimHome(String memberId, String realEstateId);
+    public boolean addZzimHome(Long memberId, Long realEstateId);
 
 
-    public boolean removeZzimHome(String memberId, String realEstateId);
+    public boolean removeZzimHome(Long memberId, Long realEstateId);
 }

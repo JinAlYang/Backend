@@ -16,6 +16,12 @@ public class RealEstateResponseDto {
 
     private Long id;
 
+    private String address;
+
+    private String latitude;
+
+    private String longitude;
+
     private MonthlyRentType monthlyRentType;
 
     private int deposit;
@@ -35,7 +41,10 @@ public class RealEstateResponseDto {
     private RealEstateDetail realEstateDetail;
 
     @Builder
-    public RealEstateResponseDto(Long id,MonthlyRentType monthlyRentType, int deposit, int roomSize, SpaceType spaceType, int monthlyPayment, LocalDateTime occupancyPeriods, WindowDirection windowDirection, LocalDateTime builtDate, RealEstateDetail realEstateDetail) {
+    public RealEstateResponseDto(String address, String latitude, String longitude, Long id,MonthlyRentType monthlyRentType, int deposit, int roomSize, SpaceType spaceType, int monthlyPayment, LocalDateTime occupancyPeriods, WindowDirection windowDirection, LocalDateTime builtDate, RealEstateDetail realEstateDetail) {
+        this.address = address;
+        this.latitude = latitude;
+        this.longitude = longitude;
         this.id = id;
         this.monthlyRentType = monthlyRentType;
         this.deposit = deposit;

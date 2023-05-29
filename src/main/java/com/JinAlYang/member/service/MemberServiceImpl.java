@@ -12,6 +12,7 @@ import com.JinAlYang.region.domain.Region;
 import com.JinAlYang.region.repository.RegionRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.swing.text.html.Option;
 import java.util.Optional;
@@ -25,6 +26,7 @@ public class MemberServiceImpl implements MemberService{
 
     private final MemberRegionRepository memberRegionRepository;
     @Override
+    @Transactional
     public Long createMember(MemberCreateDto dto) {
         return memberRepository.save(dto.toEntity()).getId();
     }
@@ -41,6 +43,7 @@ public class MemberServiceImpl implements MemberService{
     }
 
     @Override
+    @Transactional
     public MemberResponseDto signIn(Long id, MemberSignInDto memberSignInDto) {
         Optional<Member> optionalMember = memberRepository.findById(id);
         if (!optionalMember.isPresent()) {
@@ -53,6 +56,7 @@ public class MemberServiceImpl implements MemberService{
     }
 
     @Override
+    @Transactional
     public MemberResponseDto updateMemberInfo(Long id, MemberUpdateDto memberUpdateDto) {
         Optional<Member> optionalMember = memberRepository.findById(id);
         if (!optionalMember.isPresent()) {
@@ -66,13 +70,14 @@ public class MemberServiceImpl implements MemberService{
     }
 
     @Override
+    @Transactional
     public MemberResponseDto addInterestRegion(Long memberId,String regionName) {
         Optional<Region> optionalRegion = regionRepository.findByName(regionName);
         Optional<Member> optionalMember = memberRepository.findById(memberId);
         if(!optionalRegion.isPresent())
             throw new IllegalArgumentException("해당 지역이 없습니다");
         else if(!optionalMember.isPresent())
-            throw new IllegalArgumentException("해당 지역이 없습니다");
+            throw new IllegalArgumentException("해당 멤버가 없습니다");
 
         Region region = optionalRegion.get();
         Member member = optionalMember.get();
