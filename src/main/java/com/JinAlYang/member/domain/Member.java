@@ -3,13 +3,15 @@ package com.JinAlYang.member.domain;
 import com.JinAlYang.member.web.dto.MemberSignInDto;
 import com.JinAlYang.member.web.dto.MemberUpdateDto;
 import com.JinAlYang.memberRegion.MemberRegion;
-import com.JinAlYang.region.domain.Region;
 import com.JinAlYang.searchPreset.domain.SearchPreset;
 import com.JinAlYang.wishList.domain.WishList;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Entity
 @Table(name = "member")
@@ -43,8 +45,9 @@ public class Member {
     @OneToMany(mappedBy = "member")
     private List<MemberRegion> InterestMemberRegions;
 
-    @OneToMany(mappedBy = "member")
-    private List<WishList> memberRealEstate;
+    @OneToMany(mappedBy = "member", cascade = CascadeType.ALL)
+    @MapKeyColumn(name = "regionId", nullable=true)
+    private Map<Long, WishList> wishLists;
 
     @OneToMany(mappedBy = "member")
     @JoinColumn(name = "searchPreset")
@@ -82,5 +85,14 @@ public class Member {
         this.loanInterest = memberUpdateDto.getLoanInterest();
 
         return this;
+    }
+
+    public Map<Long, WishList> initializeOrGetWishList(){
+        if(this.wishLists == null)
+        {
+            this.wishLists = new HashMap<>();
+            System.out.println("해당 Member( "+this.getId()+" )의 wishList가 Null이었습니다.");
+        }
+        return this.wishLists;
     }
 }

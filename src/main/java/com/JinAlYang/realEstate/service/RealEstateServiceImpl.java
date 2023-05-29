@@ -43,6 +43,9 @@ public class RealEstateServiceImpl implements RealEstateService{
         RealEstate realEstate = optionalRealEstate.get();
         return RealEstateResponseDto.builder()
                 .id(realEstate.getId())
+                .address(realEstate.getAddress())
+                .latitude(realEstate.getLatitude())
+                .longitude(realEstate.getLongitude())
                 .monthlyRentType(realEstate.getMonthlyRentType())
                 .deposit(realEstate.getDeposit())
                 .roomSize(realEstate.getRoomSize())
@@ -57,6 +60,8 @@ public class RealEstateServiceImpl implements RealEstateService{
 
     @Override
     public List<RealEstateResponseDto> findAllRealEstateByFilter(String location, String filter) {
+        //location 범위 안에 있는 부동산 매물중에 filter에 만족하는 매물 List로 만들어서 보내기
+        
         return null;
     }
 }
