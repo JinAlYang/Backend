@@ -42,7 +42,7 @@ public class SearchPresetServiceImpl implements SearchPresetService{
     }
 
     @Override
-    @Transactional(readOnly = true)
+    @Transactional
     public SearchPresetResponseDto findSearchPresetById(Long memberId, Long presetId) {
         Optional<SearchPreset> optionalSearchPreset = searchPresetRepository.findById(presetId);
         Optional<Member> optionalMember = memberRepository.findById(memberId);
@@ -94,11 +94,8 @@ public class SearchPresetServiceImpl implements SearchPresetService{
 
         Member member = optionalMember.get();
         List<SearchPreset> searchPresets = member.initializeOrGetSearchPreset();
-        for(SearchPreset searchPreset : searchPresets) {
-            if(searchPreset.getId() == presetId) {
-                searchPresets.remove(searchPreset);
-            }
-        }
+
+        searchPresets.remove(findSearchPresetById(memberId, presetId).getPreset_id());
         searchPresetRepository.deleteById(presetId);
         return true;
     }
