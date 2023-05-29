@@ -1,14 +1,18 @@
 package com.JinAlYang.realEstate.service;
 
+import com.JinAlYang.realEstate.domain.RealEstate;
+import com.JinAlYang.realEstate.web.dto.RealEstateCreateDto;
 import com.JinAlYang.realEstate.web.dto.RealEstateResponseDto;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface RealEstateService {
 
-    public RealEstateResponseDto findRealEstateById(Long id);
+    RealEstateResponseDto findRealEstateById(Long id);
 
-    public List<RealEstateResponseDto> findAllRealEstateByFilter(String location, String filter);
+    List<RealEstateResponseDto> findAllRealEstateByFilter(String location, String filter);
 
+    Optional<RealEstate> createRealEstate(RealEstateCreateDto dto);
 }

@@ -3,6 +3,7 @@ package com.JinAlYang.memberRegion;
 import com.JinAlYang.member.domain.Member;
 import com.JinAlYang.region.domain.Region;
 import jakarta.persistence.*;
+import lombok.Builder;
 import lombok.NoArgsConstructor;
 
 @Entity
@@ -21,4 +22,10 @@ public class MemberRegion {
     @ManyToOne
     @JoinColumn(name = "region_id")
     private Region region;
+
+    @Builder
+    public MemberRegion(Member member, Region region) {
+        this.member = member;
+        this.region = region;
+    }
 }
