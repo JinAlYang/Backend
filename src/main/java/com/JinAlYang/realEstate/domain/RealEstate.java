@@ -2,7 +2,6 @@ package com.JinAlYang.realEstate.domain;
 
 
 import com.JinAlYang.region.domain.Region;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -12,9 +11,6 @@ import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
 import java.time.LocalDateTime;
-import java.util.List;
-
-import static jakarta.persistence.FetchType.LAZY;
 
 @Entity
 @Getter

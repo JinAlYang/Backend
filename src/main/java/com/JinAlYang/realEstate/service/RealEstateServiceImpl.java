@@ -38,7 +38,7 @@ public class RealEstateServiceImpl implements RealEstateService{
         Optional<RealEstate> optionalRealEstate = realEstateRepository.findById(id);
 
         if(!optionalRealEstate.isPresent())
-            throw new IllegalStateException();
+            throw new IllegalArgumentException("해당 부동산 매물이 없습니다.");
 
         RealEstate realEstate = optionalRealEstate.get();
         return RealEstateResponseDto.builder()

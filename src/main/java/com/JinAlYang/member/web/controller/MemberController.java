@@ -15,29 +15,34 @@ public class MemberController {
 
     private final MemberService memberService;
 
-    @PostMapping("")
-    public boolean createMember(@RequestBody MemberCreateDto memberCreateDto) {
-        return memberService.createMember(memberCreateDto).isPresent();
+    //테스트용
+    @PostMapping("/test")
+    public Long createMember(@RequestBody MemberCreateDto memberCreateDto) {
+        return memberService.createMember(memberCreateDto);
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("{id}")
     public MemberResponseDto getMember(@PathVariable Long id) {
         return memberService.findMemberById(id);
     }
 
-    @PostMapping("")
-    public long signIn(@PathVariable Long id, @RequestBody MemberSignInDto memberSignInDto) {
-        //member id 리턴
-        return 1;
+    //소셜 로그인 백에서 진행하면 이름, 이메일, 프로필url만 db에 저장된 상태
+    //나머지 정보 없데이트 해줘야함
+    @PostMapping("{id}")
+    public MemberResponseDto signIn(@PathVariable Long id, @RequestBody MemberSignInDto memberSignInDto) {
+        return memberService.signIn(id, memberSignInDto);
     }
 
-    @PutMapping("/{id}")
-    public boolean updateMemberInfo(@PathVariable Long id, @RequestBody MemberUpdateDto memberUpdateDto){
-        return true;
+    @PutMapping("{id}")
+    public MemberResponseDto updateMemberInfo(@PathVariable Long id, @RequestBody MemberUpdateDto memberUpdateDto){
+        return memberService.updateMemberInfo(id, memberUpdateDto);
     }
 
-    @PostMapping("{regionId}")
-    public boolean addInterestRegion(@PathVariable Long regionId) {
-        return true;
+    @PostMapping("/region/{memberId}/{regionName}")
+    public MemberResponseDto addInterestRegion(
+            @PathVariable Long memberId,
+            @PathVariable String regionName
+    ) {
+        return memberService.addInterestRegion(memberId, regionName);
     }
 }

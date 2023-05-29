@@ -11,13 +11,13 @@ import java.util.Optional;
 
 public interface MemberService {
 
-    public Optional<Member> createMember(MemberCreateDto dto);
+    public Long createMember(MemberCreateDto dto);
     public MemberResponseDto findMemberById(Long id);
 
-    public Long signIn(Long id, MemberSignInDto memberSignInDto);
+    public MemberResponseDto signIn(Long id, MemberSignInDto memberSignInDto);
 
-    public boolean updateMemberInfo(Long id, MemberUpdateDto memberUpdateDto);
+    public MemberResponseDto updateMemberInfo(Long id, MemberUpdateDto memberUpdateDto);
 
-    public boolean addInterestRegion(Long id);
+    public MemberResponseDto addInterestRegion(Long memberId,String regionName);
 
 }
