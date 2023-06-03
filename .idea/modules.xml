@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/JinAlYang.main.iml" filepath="$PROJECT_DIR$/.idea/modules/JinAlYang.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/com.springboot.JinAlYang.main.iml" filepath="$PROJECT_DIR$/.idea/modules/com.springboot.JinAlYang.main.iml" />
     </modules>
   </component>
 </project>

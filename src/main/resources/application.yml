@@ -1,18 +1,22 @@
-springdoc:
-  api-docs:
-    path: /api-docs
-  default-consumes-media-type: application/json
-  default-produces-media-type: application/json
-
 spring:
-  h2:
-    console:
-      enabled: true
   datasource:
-    url: jdbc:h2:mem:testdb
-    driverClassName: org.h2.Driver
-    username: sa
-    password:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://jinalyang-fly-db.internal:5432/jinalyang_fly?user=postgres&password=MloCk5AcPMazloi
+#    username: postgres
+#    password: MloCk5AcPMazloi
   jpa:
+    database: postgresql
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    properties:
+      hibernate:
+        show_sql: true
+        format_sql: true
+        use_sql_comments: true
     hibernate:
       ddl-auto: update
+  profiles:
+    include: oauth
+server:
+  address: 0.0.0.0
+  port: 8080
+
