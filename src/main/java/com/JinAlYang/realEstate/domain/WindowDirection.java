@@ -16,7 +16,9 @@ public enum WindowDirection {
     NORTHEAST("북동향"),
     NORTHWEST("북서향");
 
-    private final String value;
+    private String value;
+
+    WindowDirection(String value) { this.value = value; }
 
     @JsonValue
     public String getValue(){

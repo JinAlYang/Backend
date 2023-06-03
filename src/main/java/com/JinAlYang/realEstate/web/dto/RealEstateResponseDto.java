@@ -1,9 +1,6 @@
 package com.JinAlYang.realEstate.web.dto;
 
-import com.JinAlYang.realEstate.domain.MonthlyRentType;
-import com.JinAlYang.realEstate.domain.RealEstateDetail;
-import com.JinAlYang.realEstate.domain.SpaceType;
-import com.JinAlYang.realEstate.domain.WindowDirection;
+import com.JinAlYang.realEstate.domain.*;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -55,5 +52,22 @@ public class RealEstateResponseDto {
         this.windowDirection = windowDirection;
         this.builtDate = builtDate;
         this.realEstateDetail = realEstateDetail;
+    }
+
+    //entity -> dto
+    public RealEstateResponseDto(RealEstate entity) {
+        this.address = entity.getAddress();
+        this.latitude = entity.getLatitude();
+        this.longitude = entity.getLongitude();
+        this.id = entity.getId();
+        this.monthlyRentType = entity.getMonthlyRentType();
+        this.deposit = entity.getDeposit();
+        this.roomSize = entity.getRoomSize();
+        this.spaceType = entity.getSpaceType();
+        this.monthlyPayment = entity.getMonthlyPayment();
+        this.occupancyPeriods = entity.getOccupancyPeriods();
+        this.windowDirection = entity.getWindowDirection();
+        this.builtDate = entity.getBuiltDate();
+        this.realEstateDetail = entity.getRealEstateDetail();
     }
 }

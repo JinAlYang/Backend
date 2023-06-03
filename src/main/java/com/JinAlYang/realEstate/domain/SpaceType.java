@@ -9,8 +9,10 @@ import lombok.RequiredArgsConstructor;
 public enum SpaceType {
     ONEROOM("원룸"), TWOROOM("투룸"), OFFICETEL("오피스텔");
 
-    private final String value;
+    @Getter
+    private String value;
 
+    SpaceType(String value) { this.value = value; }
     @JsonValue
     public String getValue(){
         return value;
