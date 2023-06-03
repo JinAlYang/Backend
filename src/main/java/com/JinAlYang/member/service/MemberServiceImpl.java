@@ -105,4 +105,12 @@ public class MemberServiceImpl implements MemberService{
                 .loanInterest(member.getLoanInterest())
                 .build();
     }
+
+    public boolean removeMember(Long id) {
+        Optional<Member> optionalMember = memberRepository.findById(id);
+        if(!optionalMember.isPresent())
+            throw new IllegalArgumentException("해당 멤버가 없습니다.");
+        memberRepository.deleteById(id);
+        return true;
+    }
 }

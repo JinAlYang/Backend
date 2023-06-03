@@ -45,4 +45,8 @@ public class MemberController {
     ) {
         return memberService.addInterestRegion(memberId, regionName);
     }
+    @DeleteMapping("{id}")
+    public boolean removeMember(@PathVariable Long id) {
+        return removeMember(id);
+    }
 }
