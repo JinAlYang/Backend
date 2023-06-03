@@ -20,4 +20,5 @@ public interface MemberService {
 
     public MemberResponseDto addInterestRegion(Long memberId,String regionName);
 
+    public boolean removeMember(Long id);
 }
