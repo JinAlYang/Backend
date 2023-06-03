@@ -1,10 +1,5 @@
 package com.JinAlYang.realEstate.web.controller;
 
-import com.JinAlYang.member.service.MemberService;
-import com.JinAlYang.member.web.dto.MemberResponseDto;
-import com.JinAlYang.member.web.dto.MemberSignInDto;
-import com.JinAlYang.member.web.dto.MemberUpdateDto;
-import com.JinAlYang.realEstate.domain.RealEstate;
 import com.JinAlYang.realEstate.service.RealEstateService;
 import com.JinAlYang.realEstate.web.dto.RealEstateCreateDto;
 import com.JinAlYang.realEstate.web.dto.RealEstateResponseDto;
@@ -13,7 +8,6 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 @RequiredArgsConstructor
@@ -37,7 +31,7 @@ public class RealEstateController {
             @RequestParam("filter") String filter,
             HttpServletResponse response
     ) {
-        return realEstateService.findAllRealEstateByFilter(location, filter);
+        return realEstateService.findAllRealEstateResponseDtoByFilter(location, filter);
     }
 
 }
