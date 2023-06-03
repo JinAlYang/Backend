@@ -47,6 +47,6 @@ public class MemberController {
     }
     @DeleteMapping("{id}")
     public boolean removeMember(@PathVariable Long id) {
-        return removeMember(id);
+        return memberService.removeMember(id);
     }
 }
