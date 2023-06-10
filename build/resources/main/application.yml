@@ -1,7 +1,8 @@
 spring:
   datasource:
     driver-class-name: org.postgresql.Driver
-    url: jdbc:postgresql://jinalyang-fly-db.internal:5432/jinalyang_fly?user=postgres&password=MloCk5AcPMazloi
+#    url: jdbc:postgresql://jinalyang-fly-db.internal:5432/jinalyang_fly?user=postgres&password=MloCk5AcPMazloi
+    url: jdbc:postgresql://localhost:5433/postgres?user=postgres&password=1234
 #    username: postgres
 #    password: MloCk5AcPMazloi
   jpa:
