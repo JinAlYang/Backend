@@ -1,9 +1,7 @@
 spring:
   datasource:
     driver-class-name: org.postgresql.Driver
-    url: jdbc:postgresql://jinalyang-fly-db.internal:5432/jinalyang_fly?user=postgres&password=MloCk5AcPMazloi
-#    username: postgres
-#    password: MloCk5AcPMazloi
+    url: //
   jpa:
     database: postgresql
     database-platform: org.hibernate.dialect.PostgreSQLDialect
